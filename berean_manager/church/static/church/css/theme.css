@@ -89,6 +89,7 @@ p {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+    margin-top: 5%;
 }
 
 .btn {
@@ -479,8 +480,8 @@ section {
 /* ----- Buttons----- */
 .au-btn {
     line-height: 45px;
-    padding: 0 35px;
-    width: 30%;
+    padding: 0 15px;
+    width: 100%;
     text-transform: uppercase;
     color: #fff;
     -webkit-border-radius: 10px;
@@ -493,10 +494,14 @@ section {
     cursor: pointer;
 }
 
+
 .au-btn:hover {
     color: #fff;
     background: #3868cd;
 }
+
+
+
 
 .au-btn--blue2 {
     background: #00aced;
@@ -5067,8 +5072,14 @@ section {
 }
 
 .statistic__item--green {
-    background: #00b26f;
+    background: rgba(102, 102, 102, 0.527);
 }
+
+.departments :hover {
+    color: #fff;
+    background: #3868cd;
+}
+
 
 .statistic__item--orange {
     background: #ff8300;

@@ -12,7 +12,7 @@
                 <i class="fa fa-users" style="padding-left: 20%;" ></i>Members</a>
         </li>
         <li>
-            <a href="table.html">
+            <a  href="{% url 'department' %}">
                 <i class="fa fa-building" style="padding-left: 20%;"></i>Departments</a>
         </li>
         <li>
@@ -90,7 +90,17 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div style="margin-left:4%;">
-                        <div class="row">
+                            <div class="row">
+                                <div class="col-md-8"> </div>
+                                    
+                                    
+                                <div class="col-md-4">      
+                                        <button class="au-btn au-btn-icon au-btn--yellow" onclick="location.href='{% url 'add_member' %}'" >
+                                            add member<i class="fa fa-user-plus" style="padding-left: 15%;"></i></button>
+                                  
+                                </div>
+                            </div>
+                        <!-- <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
                                     <div class="table-data__tool-left">
@@ -117,7 +127,7 @@
                                         add member<i class="fa fa-user-plus" style="padding-left: 15%;"></i></button>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row m-t-25 m-b-25">
                             <div class="col-sm-6 col-lg-5">
                                 <form class="au-form-icon--sm" action="" method="post">

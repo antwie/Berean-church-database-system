@@ -39,6 +39,17 @@ def MembersView(request):
 def AddMember(request):
     return render(request, 'church/add_member.html',{"heading":"CHURCH MEMBERS"})
 
+
+@login_required
+def DepartmentView(request):
+    return render(request, 'church/departments.html',{"heading":"CHURCH DEPARTMENTS"})
+
+@login_required
+def DepartmentView(request):
+    return render(request, 'church/departments.html',{"heading":"CHURCH DEPARTMENTS"})
+
+
+
     
 @login_required
 def MembersListView(request):
