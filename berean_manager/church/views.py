@@ -73,18 +73,49 @@ def MemberFormOne(request):
     if request.method == "POST":
         try:
             _, created = Member.objects.update_or_create(
+                #Personal Information 
                 first_name = request.POST.get('firstname'),
                 last_name = request.POST.get('lastname'),
-                date_of_birth = "1999-05-05",
-                phone= request.POST.get('phone'),
-                email = request.POST.get('email'),
-                gender= request.POST.get('gender'),
-                marital_status = request.POST.get('marital_status'),
-                country = request.POST.get('country'),
-                Home_town= request.POST.get('home_town'),
-                place_of_birth=request.POST.get('pob'),
-                residence =request.POST.get('pob'),
+                other_name = request.POST.get('lastname'),
+                email =request.POST.get('email'),
+                gender = request.POST.get('gender'),
+                date_of_birth = request.POST.get('dob'),
                 
+                #Residence Information 
+                residence = request.POST.get('residence'),
+                house_number = request.POST.get('house_number'),
+                digital_address = request.POST.get('digital_address'),
+                phone_number = request.POST.get('phone_number'),
+                Home_town = request.POST.get('home_town'),
+                region = request.POST.get('region'),
+                place_of_birth = request.POST.get('place_of_birth'),
+                country = request.POST.get('country'),
+           
+                #Sacraments
+                baptism = request.POST.get('baptism'),
+                baptism_date = request.POST.get('date_of_baptism'),
+                baptism_place = request.POST.get('baptism_place'),
+                date_of_join = request.POST.get('date_joined'),
+
+                #Welfare Information
+                fathers_name = request.POST.get('father_name'),
+                fathers_location = request.POST.get('father_location'),
+                mothers_name = request.POST.get('Mother_name'),
+                mothers_location = request.POST.get('mother_location'),
+
+                #Matrimony 
+                marital_status = request.POST.get('marital_status'),
+                Spouse_name = request.POST.get('spouse'),
+                address = request.POST.get('current_address'),
+                number_of_children = request.POST.get('no_children'),
+                name_of_childresn = request.POST.get('name_children'),
+
+
+                #Emergency Contact
+                emergency_full_name = request.POST.get('emergency_name'),
+                emergency_phone = request.POST.get('emergency_phone'),
+                emergency_address = request.POST.get('emergency_address'),
+                emergency_location = request.POST.get('emergency_location'),    
             )
             
             print(_)
@@ -92,7 +123,7 @@ def MemberFormOne(request):
         except Exception :
             raise Exception
 
-            return render(request,"Somethinwrong")
+            return render(request,"Something went wrong")
     else:
         return render(request, 'authentication/login.html')
 

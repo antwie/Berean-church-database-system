@@ -101,81 +101,292 @@
                                 <!-- Form Entry -->
                                 <div class="card">
                                     <div class="card-header" style="text-align: center;">
-                                        <strong>BIO</strong> DATA
+                                         Member Registration
                                     </div>
                                     <div class="card-body card-block">
                                         <form action="{% url 'first_member_details' %}" method="post" class="">
                                             {% csrf_token %}
+
+
+
+                                             <!-- Personal Data for form -->
                                             <div class="container-fluid">
+                                                    <div class="card-header" style="text-align: center; margin: 3%;">
+                                                        <strong>Personal </strong>
+                                                    </div>
                                                 <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>First Name</label>
-                                                    <input class="au-input au-input--full" type="text" name="firstname" placeholder="" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Other Names</label>
-                                                    <input class="au-input au-input--full" type="text" name="lastname" placeholder="" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="example">Date of Birth</label>
-                                                    <div class="md-form md-outline input-with-post-icon datepicker">
-                                                        <input placeholder="" type="date" id="dob"  name="pob" class="form-control" required>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>First Name</label>
+                                                            <input class="au-input au-input--full" type="text" name="firstname" placeholder="" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Other Names</label>
+                                                            <input class="au-input au-input--full" type="text" name="other_names" placeholder="" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="example">Gender</label>
+                                                            <select name="gender" id="SelectLm" class="form-control-sm form-control" required>
+                                                                <option value="Male">Male</option>
+                                                                <option value="Female">Female</option>
+                                                                <option value="Other">Other</option>
+                                                                
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                            
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Last Name</label>
+                                                            <input class="au-input au-input--full" type="text" name="lastname" placeholder="" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="nf-email" class=" form-control-label">Email</label>
+                                                            <input type="email" id="nf-email" name="email" placeholder="Enter Email.." class="form-control" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="example">Date of Birth</label>
+                                                            <div class="md-form md-outline input-with-post-icon datepicker">
+                                                                <input placeholder="" type="date" id="dob"  name="dob" class="form-control" required>
+                                                                
+                                                            </div>
+                                                        </div>
                                                         
                                                     </div>
                                                 </div>
-                                               <div class="form-group">
-                                                <select name="gender" id="SelectLm" class="form-control-sm form-control" required>
-                                                    <label for="example">Date of Birth</label>
-                                                    <option value="0">Male</option>
-                                                    <option value="1">Female</option>
-                                                    <option value="2">Other</option>
-                                                    
-                                                </select>
-                                               </div>
-                                               <div class="form-group">
-                                                <label>Country of Birth</label>
-                                                <input class="au-input au-input--full" type="text" name="country" placeholder="" required>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Place of Birth</label>
-                                                <input class="au-input au-input--full" type="text" name="name" placeholder="" required>
-                                            </div>
-                                               
+
+                                            
+
+
+
+                                                <!-- Residence Data for form -->
+                                            <div class="container-fluid">
+                                                <div class="card-header" style="text-align: center; margin: 3%;">
+                                                    <strong>Address</strong>
                                                 </div>
+                                            <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Residential Address</label>
+                                                    <input class="au-input au-input--full" type="text" name="residence" placeholder="" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Digital Address</label>
+                                                    <input class="au-input au-input--full" type="text" name="digital_address" placeholder="" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Region</label>
+                                                    <input class="au-input au-input--full" type="text" name="region" placeholder="" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Place of Birth</label>
+                                                    <input class="au-input au-input--full" type="text" name="place_of_birth" placeholder="" required>
+                                                </div>
+                                               
+                                            </div>
                                          
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Last Name</label>
-                                                    <input class="au-input au-input--full" type="text" name="name" placeholder="" required>
+                                                    <label>House Number</label>
+                                                    <input class="au-input au-input--full" type="text" name="house_number" placeholder="" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Phone Number</label>
-                                                    <input class="au-input au-input--full" type="text" name="phone" placeholder="" required>
+                                                    <input class="au-input au-input--full" type="text" name="phone_number" placeholder="" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="nf-email" class=" form-control-label">Email</label>
-                                                    <input type="email" id="nf-email" name="email" placeholder="Enter Email.." class="form-control" required>
-                                                    
-                                                </div>
-                                                <div class="form-group">
-                                                    <select name="marital_status" id="SelectLm" class="form-control-sm form-control" required>
-                                                        <label for="example">Marital Status</label>
-                                                        <option value="0">Married</option>
-                                                        <option value="1">Single</option>
-                                                        <option value="2">Still Searching but not single</option>
-                                                        
-                                                    </select>
-                                                   </div>
-                                                   <div class="form-group">
                                                     <label>Home town</label>
                                                     <input class="au-input au-input--full" type="text" name="home_town" placeholder="" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Place of Recidence</label>
-                                                    <input class="au-input au-input--full" type="text" name="por" placeholder="" required>
+                                                    <label>Country of Birth</label>
+                                                    <input class="au-input au-input--full" type="text" name="country" placeholder="Ghana" required>
                                                 </div>
+                                            </div>
                                                 </div>
+                                            </div>
+
+
+                                            <!-- Sacrements -->
+                                            <div class="container-fluid">
+                                                <div class="card-header" style="text-align: center; margin: 3%;">
+                                                    <strong>Sacrements</strong>
+                                                </div>
+                                                <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="example">Baptism</label>
+                                                        <select name="baptism" id="SelectLm" class="form-control-sm form-control" required>
+                                                            
+                                                            <option value="Yes">Yes</option>
+                                                            <option value="No">No</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Baptism Place</label>
+                                                        <input class="au-input au-input--full" type="text" name="baptism_place" placeholder="" required>
+                                                    </div>
+                                                   
+                                                </div>
+                                             
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="example">Date of Baptism</label>
+                                                        <div class="md-form md-outline input-with-post-icon datepicker">
+                                                            <input placeholder="" type="date" id="date_of_baptism"  name="date_of_baptism" class="form-control" required>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Date Joined</label>
+                                                        <input class="au-input au-input--full" type="text" name="date_joined" placeholder="2015/01/01" required>
+                                                    </div>
+                                                    
+                                                    </div>
+                                                    </div>
+                                                </div>
+    
+
+                                        <!-- Parents Information -->
+                                            <div class="container-fluid">
+                                                <div class="card-header" style="text-align: center; margin: 3%;">
+                                                    <strong>Parents Information</strong>
+                                                </div>
+                                            <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Name of Father</label>
+                                                    <input class="au-input au-input--full" type="text" name="father_name" placeholder="" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Father's Current Location</label>
+                                                    <input class="au-input au-input--full" type="text" name="father_location" placeholder="" required>
+                                                </div>
+                                                
+                                               
+                                            </div>
+                                         
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Name of Mother</label>
+                                                    <input class="au-input au-input--full" type="text" name="Mother_name" placeholder="" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Mother's Current Location</label>
+                                                    <input class="au-input au-input--full" type="text" name="mother_location" placeholder="" required>
+                                                </div>
+                                               
+                                            </div>
+                                                </div>
+                                            </div>
+
+    
+                                                 <!-- Matrimonial Information -->
+
+                                            <div class="container-fluid">
+                                                <div class="card-header" style="text-align: center; margin: 3%;">
+                                                    <strong>Matrimony Information</strong>
+                                                </div>
+                                                <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="example">Marital Status</label>
+                                                        <select name="marital_status" id="SelectLm" class="form-control-sm form-control" required>
+                                                            <option value="Single">Single</option>
+                                                            <option value="Married">Married</option>
+                                                            <option value="Widowed">Widowed</option>
+                                                        </select>
+                                                       </div>
+                                                    <div class="form-group">
+                                                        <label>Current Address</label>
+                                                        <input class="au-input au-input--full" type="text" name="current_address" placeholder="" required>
+                                                    </div>    
+                                                </div>
+                                             
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Name of Spouse</label>
+                                                            <input class="au-input au-input--full" type="text" name="spouse" placeholder="" >
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Number of Children  : </label>
+                                                            <input type="number" min="0" max="100" name="no_children" value="1">
+                                                        </div> 
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Name of Children</label>
+                                                    <input class="au-input au-input--full"  name="name_children"  placeholder="" >
+                                                    
+                                                </div>
+                                            </div>
+                                            
+    
+                                                       <!-- Parents Information -->
+                                            <div class="container-fluid">
+                                                <div class="card-header" style="text-align: center; margin: 3%;">
+                                                    <strong>Parents Information</strong>
+                                                </div>
+                                            <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Name of Father</label>
+                                                    <input class="au-input au-input--full" type="text" name="father_name" placeholder="" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Father's Current Location</label>
+                                                    <input class="au-input au-input--full" type="text" name="father_location" placeholder="" required>
+                                                </div>
+                                                
+                                               
+                                            </div>
+                                         
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Name of Mother</label>
+                                                    <input class="au-input au-input--full" type="text" name="Mother_name" placeholder="" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Mother's Current Location</label>
+                                                    <input class="au-input au-input--full" type="text" name="mother_location" placeholder="" required>
+                                                </div>
+                                               
+                                            </div>
+                                                </div>
+                                            </div>
+
+
+                                              <!-- Emergency Information -->
+                                              <div class="container-fluid">
+                                                <div class="card-header" style="text-align: center; margin: 3%;">
+                                                    <strong>Emergency Information</strong>
+                                                </div>
+                                            <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Full name</label>
+                                                    <input class="au-input au-input--full" type="text" name="emergency_name" placeholder="" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Phone Number</label>
+                                                    <input class="au-input au-input--full" type="text" name="emergency_phone" placeholder="" required>
+                                                </div>
+                                               
+                                               
+                                            </div>
+                                         
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Full address</label>
+                                                    <input class="au-input au-input--full" type="text" name="emergency_address" placeholder="" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Location</label>
+                                                    <input class="au-input au-input--full" type="text" name="emergency_location" placeholder="" required>
+                                                </div>
+                                               
+                                            </div>
                                                 </div>
                                             </div>
                                             <div class="container-fluid">
