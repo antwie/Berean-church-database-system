@@ -2,12 +2,12 @@
 {% block nav_content%}
 <nav class="navbar-sidebar">
     <ul class="list-unstyled navbar__list">
-        <li class="active">
-            <a class="js-arrow" href="#">
+        <li >
+            <a class="js-arrow" href="{% url 'home' %}">
                 <i class="fa fa-home" style="padding-left: 20%;" ></i>Home</a>
             
         </li>
-        <li>
+        <li class="active">
             <a href="{% url 'members' %}">
                 <i class="fa fa-users" style="padding-left: 20%;" ></i>Members</a>
         </li>
@@ -15,7 +15,7 @@
             <a  href="{% url 'department' %}">
                 <i class="fa fa-building" style="padding-left: 20%;"></i>Departments</a>
         </li>
-        <li>
+        <!-- <li>
             <a href="form.html">
                 <i class="far fa-check-square"></i>Forms</a>
         </li>
@@ -80,7 +80,7 @@
                     <a href="typo.html">Typography</a>
                 </li>
             </ul>
-        </li>
+        </li> -->
     </ul>
 </nav>
 {% endblock nav_content%}
@@ -168,7 +168,7 @@
                                                         <td class="center"> 
                                                             {{ member.last_name}}
                                                          </td>
-                                                        <td class="center">{{ member.phone}}</td>
+                                                        <td class="center">{{ member.phone_number}}</td>
                                                         <td class="center">{{ member.email}}</td>
                                                         
                                                         <td>
@@ -193,7 +193,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                    <p>Copyright © 2020 . All rights reserved. By <a href="#">Emmanuel Antwi</a>.</p>
                                 </div>
                             </div>
                         </div>

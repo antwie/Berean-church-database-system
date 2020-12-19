@@ -3,7 +3,7 @@
 <nav class="navbar-sidebar">
     <ul class="list-unstyled navbar__list">
         <li >
-            <a class="js-arrow" href="#">
+            <a class="js-arrow" href="{% url 'home' %}">
                 <i class="fa fa-home" style="padding-left: 20%;" ></i>Home</a>
             
         </li>
@@ -15,7 +15,7 @@
             <a  href="{% url 'department' %}">
                 <i class="fa fa-building" style="padding-left: 20%;"></i>Departments</a>
         </li>
-        <li>
+        <!-- <li>
             <a href="form.html">
                 <i class="far fa-check-square"></i>Forms</a>
         </li>
@@ -80,7 +80,7 @@
                     <a href="typo.html">Typography</a>
                 </li>
             </ul>
-        </li>
+        </li> -->
     </ul>
 </nav>
 {% endblock nav_content%}
@@ -105,39 +105,24 @@
                             <section class="statistic statistic2">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-md-6 col-lg-4">
-                                            <a class="departments"> 
-                                            <div class="statistic__item statistic__item--green">
+                                         {% for department in departments %}
+                                         
+                                            <div class="col-md-6 col-lg-4">
                                                 
-                                                <h4 style="color: black;">Men Ministry Department</h4>
-                                                <div class="icon">
-                                                    <i class="zmdi zmdi-male"></i>
+                                                <div class="statistic__item statistic__item--yellow">
+                                                    
+                                                    <h4 style="color: black;"> {{department.name}} Ministry</h4>
+                                                    <div class="icon">
+                                                        <i class="zmdi zmdi-male"></i>
+                                                    </div>
+                                                    <div class="btn-block" style="position: relative; margin-top:60%;"><button type="button" class="btn btn-outline-primary btn-lg btn-block">View more</button></div>
                                                 </div>
+                                            
                                             </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4">
-                                            <a class="departments"> 
-                                            <div class="statistic__item statistic__item--green">
-                                                
-                                                <h4 style="color: black;">Women Ministry Department</h4>
-                                                <div class="icon">
-                                                    <i class="zmdi zmdi-female"></i>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4">
-                                            <a class="departments"> 
-                                            <div class="statistic__item statistic__item--green">
-                                                
-                                                <h4 style="color: black;">Children Ministry Department</h4>
-                                                <div class="icon">
-                                                    <i class="zmdi zmdi-male-female"></i>
-                                                </div>
-                                            </div>
-                                            </a>
-                                        </div>
+                                       
+                                        {% endfor %}
+                                        
+                                     
                                         
                                     </div>
                                 </div>

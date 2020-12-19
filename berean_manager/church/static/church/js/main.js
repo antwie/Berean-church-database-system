@@ -622,6 +622,9 @@
 
     // Percent Chart 2
     var ctx = document.getElementById("percent-chart2");
+    var males = $('#percent-chart2').attr('data');
+    var females = $('#percent-chart2').attr('data2');
+  
     if (ctx) {
       ctx.height = 209;
       var myChart = new Chart(ctx, {
@@ -630,7 +633,7 @@
           datasets: [
             {
               label: "My First dataset",
-              data: [60, 40],
+              data: [males,females ],
               backgroundColor: [
                 '#00b5e9',
                 '#fa4251'

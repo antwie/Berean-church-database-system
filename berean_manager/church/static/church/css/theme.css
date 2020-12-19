@@ -5072,9 +5072,13 @@ section {
 }
 
 .statistic__item--green {
-    background: rgba(102, 102, 102, 0.527);
+    background: rgba(14, 184, 28, 0.527);
 }
 
+.statistic__item--yellow {
+    background: rgba(222, 200, 66);
+}
+ 
 .departments :hover {
     color: #fff;
     background: #3868cd;

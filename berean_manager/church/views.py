@@ -23,8 +23,17 @@ from formtools.wizard.views import SessionWizardView
 
 @login_required
 def LoginView(request):
-    return render(request, 'church/index.html')
+    return render(request, 'church/home.html')
 
+
+
+@login_required
+def HomeView(request):
+    members = Member.objects.all().values()
+    departments = Department.objects.all().values()
+    males  = len(Member.objects.filter(gender='Male'))
+    females  = len(Member.objects.filter(gender='Female'))
+    return render(request, 'church/home.html',{'males':males,'females':females,'members':len(members),'departments':len(departments)})
 
 # List all member in the church
 @login_required
@@ -42,11 +51,9 @@ def AddMember(request):
 
 @login_required
 def DepartmentView(request):
-    return render(request, 'church/departments.html',{"heading":"CHURCH DEPARTMENTS"})
+    departmentList = Department.objects.all().values()
+    return render(request, 'church/departments.html',{"departments":departmentList,"heading":"CHURCH DEPARTMENTS"})
 
-@login_required
-def DepartmentView(request):
-    return render(request, 'church/departments.html',{"heading":"CHURCH DEPARTMENTS"})
 
 
 
@@ -66,6 +73,48 @@ def MembersListView(request):
     #     return render(request, 'housing/roommate.html', {"students":students_in_a_room, "roomID": roomID, "has_room":False})
     # else:
     #     return render(request, 'housing/roommate.html', {"students":students_in_a_room, "roomID": roomID, "room":room,"student":student, "has_room":True})
+
+@login_required
+def addDepart(request):
+    return render(request,"church/add_department.html")
+
+@login_required
+def AddToDepartment(request,memberID):
+    
+    member = Member.objects.filter(id=memberID)[0]
+    if request.method == "POST":
+        departments = request.POST.getlist('department')
+        aux_departments = request.POST.getlist('aux_department')
+        groups = request.POST.getlist('groups')
+
+        mega = [departments,aux_departments,groups]
+
+        for i in mega:
+            for j in i:
+                dep = Department.objects.filter(name=j)[0]
+                setMemberDepartment(request,dep,member)
+        return HttpResponseRedirect(reverse('members'))
+    else:
+        return render(request, "Something went wrong")
+
+
+def setMemberDepartment(request,department_name,member):
+    
+    try:
+        
+        _, created = MemberDepartment.objects.update_or_create(
+            member = member,
+            department = department_name,
+            role  = "ggg",
+            state = "Active",
+
+        )
+        
+    except Exception :
+            raise Exception
+
+            return render(request,"Something went wrong")
+
 
 
 @login_required
@@ -118,8 +167,8 @@ def MemberFormOne(request):
                 emergency_location = request.POST.get('emergency_location'),    
             )
             
-            print(_)
-            return HttpResponseRedirect(reverse('members'))
+            print(_.id)
+            return render(request,"church/add_department.html",{"memberID":_.id})
         except Exception :
             raise Exception
 

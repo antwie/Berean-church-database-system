@@ -104,7 +104,7 @@ class MemberDepartment(models.Model):
     created = models.DateTimeField(default =timezone.now)
 
     def __str__(self):
-        return str(self.Member)
+        return str(self.member)
 
     class Meta:
         db_table = "member_department"

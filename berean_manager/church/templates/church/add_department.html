@@ -5,7 +5,7 @@
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
                     <li class="">
-                        <a class="js-arrow" href="#">
+                        <a class="js-arrow" href="{% url 'home' %}">
                             <i class="fa fa-home" style="padding-left: 20%;" ></i>Home</a>
                         
                     </li>
@@ -101,89 +101,156 @@
                                 <!-- Form Entry -->
                                 <div class="card">
                                     <div class="card-header" style="text-align: center;">
-                                        <strong>BIO</strong> DATA
+                                        <strong>Departments and Groups</strong> 
                                     </div>
                                     <div class="card-body card-block">
-                                        <form action="{% url 'first_member_details' %}" method="post" class="">
+                                        <form action="{% url 'add_department' memberID %}" method="post" class="">
                                             {% csrf_token %}
                                             <div class="container-fluid">
                                                 <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>First Name</label>
-                                                    <input class="au-input au-input--full" type="text" name="firstname" placeholder="">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Other Names</label>
-                                                    <input class="au-input au-input--full" type="text" name="lastname" placeholder="">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="example">Date of Birth</label>
-                                                    <div class="md-form md-outline input-with-post-icon datepicker">
-                                                        <input placeholder="" type="date" id="dob"  name="pob" class="form-control">
-                                                        
+                                            <div class="col-md-8">
+                                                <div class="row form-group">
+                                                    <div class="col col-md-3">
+                                                        <label class=" form-control-label">Departments</label>
+                                                    </div>
+                                                <div class="col col-md-6">
+                                                    <div class="form-check">
+                                                        <div class="checkbox">
+                                                            <label for="checkbox1" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox1" name="department" value="Men" class="form-check-input">Men
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label for="checkbox2" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox2" name="department" value="Women" class="form-check-input"> Women
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label for="checkbox3" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox3" name="department" value="Youth" class="form-check-input"> Youth
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label for="checkbox3" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox4" name="department" value="Children" class="form-check-input"> Children
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                               <div class="form-group">
-                                                <select name="gender" id="SelectLm" class="form-control-sm form-control">
-                                                    <label for="example">Date of Birth</label>
-                                                    <option value="0">Male</option>
-                                                    <option value="1">Female</option>
-                                                    <option value="2">Other</option>
-                                                    
-                                                </select>
-                                               </div>
-                                               <div class="form-group">
-                                                <label>Country of Birth</label>
-                                                <input class="au-input au-input--full" type="text" name="country" placeholder="">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Place of Birth</label>
-                                                <input class="au-input au-input--full" type="text" name="name" placeholder="">
-                                            </div>
-                                               
+                                                </div>
+                                                <div class="row form-group">
+                                                    <div class="col col-md-3">
+                                                        <label class=" form-control-label">Auxiliary Departments</label>
+                                                    </div>
+                                                <div class="col col-md-6">
+                                                    <div class="form-check">
+                                                        <div class="checkbox">
+                                                            <label for="checkbox1" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox1" name="aux_department" value="joy" class="form-check-input">Joy
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label for="checkbox2" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox2" name="aux_department" value="Ys" class="form-check-input"> Ys
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label for="checkbox3" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox3" name="aux_department" value="Missionette" class="form-check-input"> Missionette
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label for="checkbox4" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox4" name="aux_department" value="Royal Rangers" class="form-check-input"> Royal Rangers
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+
+
+                                                <div class="row form-group">
+                                                    <div class="col col-md-3">
+                                                        <label class=" form-control-label">Groups</label>
+                                                    </div>
+                                                <div class="col col-md-6">
+                                                    <div class="form-check">
+                                                        <div class="checkbox">
+                                                            <label for="checkbox1" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox1" name="groups" value="ushers" class="form-check-input">Ushers
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label for="checkbox2" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox2" name="groups" value="multimedia" class="form-check-input"> Multimedia
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label for="checkbox3" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox3" name="groups" value="Missions" class="form-check-input"> Missions
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label for="checkbox4" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox4" name="groups" value="finance" class="form-check-input"> Finance
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label for="checkbox5" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox1" name="groups" value="welfare" class="form-check-input">Welfare
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label for="checkbox6" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox2" name="groups" value="Senior Choir" class="form-check-input"> Senior Choir
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label for="checkbox7" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox3" name="groups" value="Protocol" class="form-check-input"> Protocol
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label for="checkbox7" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox4" name="groups" value="Sunday School" class="form-check-input"> Sunday School
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label for="checkbox8" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox1" name="groups" value="Prayer Warrior" class="form-check-input">Prayer Warrior
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label for="checkbox9" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox2" name="groups" value="Family Life" class="form-check-input"> Family Life
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label for="checkbox10" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox3" name="groups" value="Choreography" class="form-check-input"> Choreography
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label for="checkbox11" class="form-check-label ">
+                                                                <input type="checkbox" id="checkbox4" name="groups" value="Junior Choir" class="form-check-input"> Junior Choir
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+
+
                                                 </div>
                                          
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Last Name</label>
-                                                    <input class="au-input au-input--full" type="text" name="name" placeholder="">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Phone Number</label>
-                                                    <input class="au-input au-input--full" type="text" name="phone" placeholder="">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="nf-email" class=" form-control-label">Email</label>
-                                                    <input type="email" id="nf-email" name="email" placeholder="Enter Email.." class="form-control">
-                                                    
-                                                </div>
-                                                <div class="form-group">
-                                                    <select name="marital_status" id="SelectLm" class="form-control-sm form-control">
-                                                        <label for="example">Marital Status</label>
-                                                        <option value="0">Married</option>
-                                                        <option value="1">Single</option>
-                                                        <option value="2">Still Searching but not single</option>
-                                                        
-                                                    </select>
-                                                   </div>
-                                                   <div class="form-group">
-                                                    <label>Home town</label>
-                                                    <input class="au-input au-input--full" type="text" name="home_town" placeholder="">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Place of Recidence</label>
-                                                    <input class="au-input au-input--full" type="text" name="por" placeholder="">
-                                                </div>
-                                                </div>
+                                    
                                                 </div>
                                             </div>
                                             <div class="container-fluid">
                                                 <div class="row">
-                                                    <div class="col-md-6 offset-md-6 col-sm-6">
+                                                    <div class="col-md-4 offset-md-4 col-sm-4">
                                                         
                                                             <button class="au-btn au-btn--block m-b-20" type="submit" 
-                                                                        style="background-color: #04047B; ">Save and Continue <i  class="fa fa-arrow-right"></i>
+                                                                        style="background-color: #04047B; ">Finish <i  class="fa fa-arrow-right"></i>
                                                                     </button>
                                                         
                                                        
@@ -203,9 +270,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                    <p>Copyright © 2020 . All rights reserved. By <a href="#">Emmanuel Antwi</a>.</p>
                                 </div>
                             </div>
+                        </div>
                         </div>
                         </div>
                     </div>
