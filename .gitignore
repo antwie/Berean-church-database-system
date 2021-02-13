@@ -1,0 +1,4 @@
+*cpython-39.pyc
+*.png
+berean_manager/db.sqlite3
+

@@ -12,6 +12,7 @@ urlpatterns = [
     path('department/', DepartmentView, name='department'),
     path('addMember/',AddMember,name='add_member'),
     path('member/', MemberFormOne, name='first_member_details'),
+    path('image/', ImageUpload, name='upload_image'),
     path('addDepartment/<int:memberID>/',AddToDepartment,name='add_department'),
     path('addDepart/',addDepart,name='addDepartment'),
     path('welcome/',HomeView,name='home')

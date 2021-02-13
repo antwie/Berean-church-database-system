@@ -7,7 +7,7 @@ from django.db.models import Count
 from django.http import HttpResponseRedirect
 from django.shortcuts import render,HttpResponse
 from django.urls import reverse
-from .models import Member,Department,Family,MemberDepartment,MemberFamily
+from .models import Member,Department,Family,MemberDepartment,MemberFamily, ImageContainer
 from django.contrib.auth.models import User
 import csv,io
 from django.contrib import messages
@@ -115,7 +115,17 @@ def setMemberDepartment(request,department_name,member):
 
             return render(request,"Something went wrong")
 
-
+def ImageUpload(request):
+    print('image upload',  request.method)
+    if request.method == 'POST':
+        # get the files with the given name from the html
+        files = request.FILES.get('profilepic')
+        print(files, request.FILES)
+        # store the image in a model rhat has an imagefield instance 
+        ImageContainer.objects.create(image=files)
+        # redirect to a different page otherwise file keeps saving if user refreshing 
+        return render(request, 'church/image_upload.html', {"message": 'image upload was successful'})
+    return render(request, 'church/image_upload.html', {"message": ''})
 
 @login_required
 def MemberFormOne(request):

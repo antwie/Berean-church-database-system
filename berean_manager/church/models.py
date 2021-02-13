@@ -9,7 +9,7 @@ from django.utils import timezone
 class Member(models.Model):
 
     #personal 
-    first_name = models.CharField(max_length = 50,default ='')
+    first_name = models.CharField(max_length = 50,default ='', blank=True, null=True)
     last_name = models.CharField(max_length = 50,default ='')
     other_name = models.CharField(max_length = 50,default ='')
     email = models.EmailField( max_length=150, default='')
@@ -109,3 +109,7 @@ class MemberDepartment(models.Model):
     class Meta:
         db_table = "member_department"
 
+class ImageContainer(models.Model):
+    # if you want to link the user id through foreignkey, be my guest
+    
+    image = models.ImageField(upload_to='images')
