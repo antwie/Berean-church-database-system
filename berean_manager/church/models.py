@@ -112,3 +112,7 @@ class MemberDepartment(models.Model):
     class Meta:
         db_table = "member_department"
 
+class ImageContainer(models.Model):
+    # if you want to link the user id through foreignkey, be my guest
+    
+    image = models.ImageField(upload_to='images')

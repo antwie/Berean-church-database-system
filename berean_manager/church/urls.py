@@ -17,6 +17,7 @@ urlpatterns = [
     path('member/', MemberFormOne, name='first_member_details'),
     path('sacrament/<int:memberID>/',Sacraments,name='sacrament'),
     path('welfare/<int:memberID>/',Welfare_Information,name='welfare'),
+    path('image/', ImageUpload, name='upload_image'),
     path('addDepartment/<int:memberID>/',AddToDepartment,name='add_department'),
 
     ]

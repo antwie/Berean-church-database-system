@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="CHurch Management platform">
+    <meta name="author" content="Emmanuel Antwi">
+    <meta name="keywords" content="Berean Assemblies of God">
+
+    <!-- Title Page-->
+    <title>AG Login</title>
+
+</head>
+
+<body class="animsition">
+    <form enctype="multipart/form-data" method="POST" action="{% url 'upload_image' %}">
+        {% csrf_token %}
+        <input type="file" name="profilepic"/>
+        <button>
+            submittt
+        </button>
+        <p style="color: green;">{{message}}</p>
+    </form>
+</body>
+
+</html>
