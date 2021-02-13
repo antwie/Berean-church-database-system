@@ -9,80 +9,15 @@
                             <i class="fa fa-home" style="padding-left: 20%;" ></i>Home</a>
                         
                     </li>
-                    <li >
+                    <li class="active">
                         <a href="{% url 'members' %}">
                             <i class="fa fa-users" style="padding-left: 20%;" ></i>Members</a>
                     </li>
-                    <li class="active">
-                        <a href="{% url 'department' %}">
+                    <li>
+                        <a  href="{% url 'department' %}">
                             <i class="fa fa-building" style="padding-left: 20%;"></i>Departments</a>
                     </li>
-                    <li>
-                        <a href="form.html">
-                            <i class="far fa-check-square"></i>Forms</a>
-                    </li>
-                    <li>
-                        <a href="calendar.html">
-                            <i class="fas fa-calendar-alt"></i>Calendar</a>
-                    </li>
-                    <li>
-                        <a href="map.html">
-                            <i class="fas fa-map-marker-alt"></i>Maps</a>
-                    </li>
-                    <li class="has-sub">
-                        <a class="js-arrow" href="#">
-                            <i class="fas fa-copy"></i>Pages</a>
-                        <ul class="list-unstyled navbar__sub-list js-sub-list">
-                            <li>
-                                <a href="login.html">Login</a>
-                            </li>
-                            <li>
-                                <a href="register.html">Register</a>
-                            </li>
-                            <li>
-                                <a href="forget-pass.html">Forget Password</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-sub">
-                        <a class="js-arrow" href="#">
-                            <i class="fas fa-desktop"></i>UI Elements</a>
-                        <ul class="list-unstyled navbar__sub-list js-sub-list">
-                            <li>
-                                <a href="button.html">Button</a>
-                            </li>
-                            <li>
-                                <a href="badge.html">Badges</a>
-                            </li>
-                            <li>
-                                <a href="tab.html">Tabs</a>
-                            </li>
-                            <li>
-                                <a href="card.html">Cards</a>
-                            </li>
-                            <li>
-                                <a href="alert.html">Alerts</a>
-                            </li>
-                            <li>
-                                <a href="progress-bar.html">Progress Bars</a>
-                            </li>
-                            <li>
-                                <a href="modal.html">Modals</a>
-                            </li>
-                            <li>
-                                <a href="switch.html">Switchs</a>
-                            </li>
-                            <li>
-                                <a href="grid.html">Grids</a>
-                            </li>
-                            <li>
-                                <a href="fontawesome.html">Fontawesome Icon</a>
-                            </li>
-                            <li>
-                                <a href="typo.html">Typography</a>
-                            </li>
-                        </ul>
-                    </li>
+                   
                 </ul>
             </nav>
             {% endblock nav_content%}
@@ -151,17 +86,17 @@
                                                         </div>
                                                         <div class="checkbox">
                                                             <label for="checkbox2" class="form-check-label ">
-                                                                <input type="checkbox" id="checkbox2" name="aux_department" value="Ys" class="form-check-input"> Ys
+                                                                <input type="checkbox" id="checkbox2" name="aux_department" value="ys" class="form-check-input"> Ys
                                                             </label>
                                                         </div>
                                                         <div class="checkbox">
                                                             <label for="checkbox3" class="form-check-label ">
-                                                                <input type="checkbox" id="checkbox3" name="aux_department" value="Missionette" class="form-check-input"> Missionette
+                                                                <input type="checkbox" id="checkbox3" name="aux_department" value="missionette" class="form-check-input"> Missionette
                                                             </label>
                                                         </div>
                                                         <div class="checkbox">
                                                             <label for="checkbox4" class="form-check-label ">
-                                                                <input type="checkbox" id="checkbox4" name="aux_department" value="Royal Rangers" class="form-check-input"> Royal Rangers
+                                                                <input type="checkbox" id="checkbox4" name="aux_department" value="royal rangers" class="form-check-input"> Royal Rangers
                                                             </label>
                                                         </div>
                                                     </div>
@@ -187,7 +122,7 @@
                                                         </div>
                                                         <div class="checkbox">
                                                             <label for="checkbox3" class="form-check-label ">
-                                                                <input type="checkbox" id="checkbox3" name="groups" value="Missions" class="form-check-input"> Missions
+                                                                <input type="checkbox" id="checkbox3" name="groups" value="missions" class="form-check-input"> Missions
                                                             </label>
                                                         </div>
                                                         <div class="checkbox">
@@ -202,37 +137,37 @@
                                                         </div>
                                                         <div class="checkbox">
                                                             <label for="checkbox6" class="form-check-label ">
-                                                                <input type="checkbox" id="checkbox2" name="groups" value="Senior Choir" class="form-check-input"> Senior Choir
+                                                                <input type="checkbox" id="checkbox2" name="groups" value="senior choir" class="form-check-input"> Senior Choir
                                                             </label>
                                                         </div>
                                                         <div class="checkbox">
                                                             <label for="checkbox7" class="form-check-label ">
-                                                                <input type="checkbox" id="checkbox3" name="groups" value="Protocol" class="form-check-input"> Protocol
+                                                                <input type="checkbox" id="checkbox3" name="groups" value="protocol" class="form-check-input"> Protocol
                                                             </label>
                                                         </div>
                                                         <div class="checkbox">
                                                             <label for="checkbox7" class="form-check-label ">
-                                                                <input type="checkbox" id="checkbox4" name="groups" value="Sunday School" class="form-check-input"> Sunday School
+                                                                <input type="checkbox" id="checkbox4" name="groups" value="sunday school" class="form-check-input"> Sunday School
                                                             </label>
                                                         </div>
                                                         <div class="checkbox">
                                                             <label for="checkbox8" class="form-check-label ">
-                                                                <input type="checkbox" id="checkbox1" name="groups" value="Prayer Warrior" class="form-check-input">Prayer Warrior
+                                                                <input type="checkbox" id="checkbox1" name="groups" value="prayer warrior" class="form-check-input">Prayer Warrior
                                                             </label>
                                                         </div>
                                                         <div class="checkbox">
                                                             <label for="checkbox9" class="form-check-label ">
-                                                                <input type="checkbox" id="checkbox2" name="groups" value="Family Life" class="form-check-input"> Family Life
+                                                                <input type="checkbox" id="checkbox2" name="groups" value="family life" class="form-check-input"> Family Life
                                                             </label>
                                                         </div>
                                                         <div class="checkbox">
                                                             <label for="checkbox10" class="form-check-label ">
-                                                                <input type="checkbox" id="checkbox3" name="groups" value="Choreography" class="form-check-input"> Choreography
+                                                                <input type="checkbox" id="checkbox3" name="groups" value="choreography" class="form-check-input"> Choreography
                                                             </label>
                                                         </div>
                                                         <div class="checkbox">
                                                             <label for="checkbox11" class="form-check-label ">
-                                                                <input type="checkbox" id="checkbox4" name="groups" value="Junior Choir" class="form-check-input"> Junior Choir
+                                                                <input type="checkbox" id="checkbox4" name="groups" value="junior choir" class="form-check-input"> Junior Choir
                                                             </label>
                                                         </div>
                                                     </div>

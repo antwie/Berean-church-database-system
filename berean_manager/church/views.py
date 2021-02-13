@@ -115,6 +115,64 @@ def setMemberDepartment(request,department_name,member):
 
             return render(request,"Something went wrong")
 
+@login_required
+def Sacraments(request,memberID):
+
+    member = Member.objects.filter(id=memberID)[0]
+    if request.method == "POST":
+        try:    
+            #Sacraments
+            member.baptism = request.POST.get('baptism')
+            member.baptism_date = request.POST.get('date_of_baptism')
+            member.baptism_place = request.POST.get('baptism_place')
+            member.date_of_join = request.POST.get('date_joined')
+            member.baptism_type = request.POST.get('baptism_type')
+            member.save()
+            return render(request,"church/welfare.html",{"memberID":memberID})
+        except Exception :
+            raise Exception
+
+            return render(request,"Something went wrong")
+    else:
+        return render(request, 'authentication/login.html')
+
+
+
+@login_required
+def Welfare_Information(request,memberID):
+    member = Member.objects.filter(id=memberID)[0]
+    if request.method == "POST":
+        try:    
+            #Welfare Information
+            member.fathers_name = request.POST.get('father_name')
+            member.fathers_location = request.POST.get('father_location')
+            member.father_deceased = request.POST.get('fatherAliveorDead')
+            member.mothers_name = request.POST.get('Mother_name')
+            member.mothers_location = request.POST.get('mother_location')
+            member.mother_deceased = request.POST.get('motherAliveorDead')
+
+            #Matrimony 
+            member.marital_status = request.POST.get('marital_status')
+            member.Spouse_name = request.POST.get('spouse')
+            member.address = request.POST.get('current_address')
+            member.number_of_children = request.POST.get('no_children')
+            member.name_of_childresn = request.POST.get('name_children')
+
+            #Emergency Contact
+            member.emergency_full_name = request.POST.get('emergency_name')
+            member.emergency_phone = request.POST.get('emergency_phone')
+            member.emergency_address = request.POST.get('emergency_address')
+            member.emergency_location = request.POST.get('emergency_location')
+            
+            
+            member.save()
+            return render(request,"church/add_department.html",{"memberID":memberID})
+        except Exception :
+            raise Exception
+
+            return render(request,"Something went wrong")
+    else:
+        return render(request, 'authentication/login.html')
 
 
 @login_required
@@ -139,36 +197,11 @@ def MemberFormOne(request):
                 region = request.POST.get('region'),
                 place_of_birth = request.POST.get('place_of_birth'),
                 country = request.POST.get('country'),
-           
-                #Sacraments
-                baptism = request.POST.get('baptism'),
-                baptism_date = request.POST.get('date_of_baptism'),
-                baptism_place = request.POST.get('baptism_place'),
-                date_of_join = request.POST.get('date_joined'),
-
-                #Welfare Information
-                fathers_name = request.POST.get('father_name'),
-                fathers_location = request.POST.get('father_location'),
-                mothers_name = request.POST.get('Mother_name'),
-                mothers_location = request.POST.get('mother_location'),
-
-                #Matrimony 
-                marital_status = request.POST.get('marital_status'),
-                Spouse_name = request.POST.get('spouse'),
-                address = request.POST.get('current_address'),
-                number_of_children = request.POST.get('no_children'),
-                name_of_childresn = request.POST.get('name_children'),
-
-
-                #Emergency Contact
-                emergency_full_name = request.POST.get('emergency_name'),
-                emergency_phone = request.POST.get('emergency_phone'),
-                emergency_address = request.POST.get('emergency_address'),
-                emergency_location = request.POST.get('emergency_location'),    
+                 
             )
             
-            print(_.id)
-            return render(request,"church/add_department.html",{"memberID":_.id})
+            
+            return render(request,"church/sacrament.html",{"memberID":_.id})
         except Exception :
             raise Exception
 

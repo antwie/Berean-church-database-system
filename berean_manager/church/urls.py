@@ -11,9 +11,12 @@ urlpatterns = [
     path('user/', MembersView, name='members'),
     path('department/', DepartmentView, name='department'),
     path('addMember/',AddMember,name='add_member'),
+    path('welcome/',HomeView,name='home'),
+
+    #Add member to form
     path('member/', MemberFormOne, name='first_member_details'),
+    path('sacrament/<int:memberID>/',Sacraments,name='sacrament'),
+    path('welfare/<int:memberID>/',Welfare_Information,name='welfare'),
     path('addDepartment/<int:memberID>/',AddToDepartment,name='add_department'),
-    path('addDepart/',addDepart,name='addDepartment'),
-    path('welcome/',HomeView,name='home')
 
     ]
