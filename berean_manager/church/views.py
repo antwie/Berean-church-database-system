@@ -38,9 +38,7 @@ def HomeView(request):
 # List all member in the church
 @login_required
 def MembersView(request):
-    
     members = Member.objects.all().values()
-     
     return render(request, 'church/index.html', {"members":members,"heading":"CHURCH MEMBERS"})
 
 
@@ -50,12 +48,14 @@ def AddMember(request):
     return render(request, 'church/add_member.html',{"heading":"CHURCH MEMBERS"})
 
 
+#Display the list of all departments 
 @login_required
 def DepartmentView(request):
     departmentList = Department.objects.all().values()
     return render(request, 'church/departments.html',{"departments":departmentList,"heading":"CHURCH DEPARTMENTS"})
 
 
+#View full detail information about a particular member
 @login_required
 def MembersInfoView(request,memberID):
      member = Member.objects.filter(id=memberID)[0]
