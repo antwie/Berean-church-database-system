@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
-
+from datetime import date
 # Create your models here.\
 class Member(models.Model):
 
@@ -15,6 +15,7 @@ class Member(models.Model):
     email = models.EmailField( max_length=150, default='' ,blank=True)
     gender = models.CharField(max_length = 20, default = '' ,blank=True)
     date_of_birth = models.DateField()
+    date_joined = models.DateField(blank=True, default=date(1111, 11, 11), null=True)
 
     #residence 
     residence = models.CharField(max_length = 100,default ='' ,blank=True)  
@@ -25,6 +26,7 @@ class Member(models.Model):
     region = models.CharField(max_length = 100,default ='' ,blank=True)
     place_of_birth = models.CharField(max_length = 100,default ='' ,blank=True)
     country = models.CharField(max_length = 20, default='Ghana' ,blank=True)
+    landmark = models.CharField(max_length = 100, default=' ' ,blank=True)
 
     #Sacraments
     baptism = models.CharField(max_length = 20, default='Yes' ,blank=True)
@@ -112,7 +114,14 @@ class MemberDepartment(models.Model):
     class Meta:
         db_table = "member_department"
 
+
 class ImageContainer(models.Model):
-    # if you want to link the user id through foreignkey, be my guest
     
+    member = models.ForeignKey(Member, on_delete= models.CASCADE, default=None)
     image = models.ImageField(upload_to='images')
+
+    def __str__(self):
+        return str(self.member.first_name)+ str(" ")+ str(self.member.last_name)
+
+    
+

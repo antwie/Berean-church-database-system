@@ -17,7 +17,11 @@ urlpatterns = [
     path('member/', MemberFormOne, name='first_member_details'),
     path('sacrament/<int:memberID>/',Sacraments,name='sacrament'),
     path('welfare/<int:memberID>/',Welfare_Information,name='welfare'),
-    path('image/', ImageUpload, name='upload_image'),
+    path('image/<int:memberID>/', ImageUpload, name='upload_image'),
     path('addDepartment/<int:memberID>/',AddToDepartment,name='add_department'),
+
+
+    #View details of a member
+    path('member/<int:memberID>/', MembersInfoView, name='memberDetails'),
 
     ]

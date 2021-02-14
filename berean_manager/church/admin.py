@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from church.models import Member,Department,Family,MemberDepartment,MemberFamily
+from church.models import Member,Department,Family,MemberDepartment,MemberFamily,ImageContainer
 # Register your models here.
 
 
@@ -12,3 +12,4 @@ admin.site.register(Department)
 admin.site.register(Family)
 admin.site.register(MemberDepartment)
 admin.site.register(MemberFamily)
+admin.site.register(ImageContainer)

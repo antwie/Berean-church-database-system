@@ -16,13 +16,13 @@
 </head>
 
 <body class="animsition">
-    <form enctype="multipart/form-data" method="POST" action="{% url 'upload_image' %}">
+    <form enctype="multipart/form-data" method="POST" action="{% url 'upload_image' memberID %}">
         {% csrf_token %}
         <input type="file" name="profilepic"/>
         <button>
             submittt
         </button>
-        <p style="color: green;">{{message}}</p>
+        
     </form>
 </body>
 

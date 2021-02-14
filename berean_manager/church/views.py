@@ -38,10 +38,11 @@ def HomeView(request):
 # List all member in the church
 @login_required
 def MembersView(request):
-    print(request.user.username)
+    
     members = Member.objects.all().values()
-    # print(members)
+     
     return render(request, 'church/index.html', {"members":members,"heading":"CHURCH MEMBERS"})
+
 
 # Add a member to the church database
 @login_required
@@ -55,25 +56,18 @@ def DepartmentView(request):
     return render(request, 'church/departments.html',{"departments":departmentList,"heading":"CHURCH DEPARTMENTS"})
 
 
-
+@login_required
+def MembersInfoView(request,memberID):
+     member = Member.objects.filter(id=memberID)[0]
+     department = MemberDepartment.objects.filter(member=member)
+     image = ImageContainer.objects.filter(member=member)
+     if len(image) != 0:
+         image = image[0]
+     return render(request, 'church/profile.html',{"member_info":member,"departments":department,"photo":image})
 
     
-@login_required
-def MembersListView(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
-    # user_id = request.user.id
-    # students_in_a_room = StudentRoom.objects.filter(room=roomID)
-    # student = Student.objects.filter(studentid=user_id)[0]
-    # student_already_has_a_room = StudentRoom.objects.filter(student=student).count() != 0
-    # room = Room.objects.filter(id = roomID)[0]
-    #print(User.objects.filter(username=)[0])
-    # if room.gender == student.gender:
-    #     if student_already_has_a_room:
-    #         return render(request, 'housing/roommate.html', {"students": students_in_a_room, "roomID": roomID, "has_room":True})
-    #     return render(request, 'housing/roommate.html', {"students":students_in_a_room, "roomID": roomID, "has_room":False})
-    # else:
-    #     return render(request, 'housing/roommate.html', {"students":students_in_a_room, "roomID": roomID, "room":room,"student":student, "has_room":True})
 
+   
 @login_required
 def addDepart(request):
     return render(request,"church/add_department.html")
@@ -82,38 +76,42 @@ def addDepart(request):
 def AddToDepartment(request,memberID):
     
     member = Member.objects.filter(id=memberID)[0]
-    if request.method == "POST":
-        departments = request.POST.getlist('department')
-        aux_departments = request.POST.getlist('aux_department')
-        groups = request.POST.getlist('groups')
-
-        mega = [departments,aux_departments,groups]
-
-        for i in mega:
-            for j in i:
-                dep = Department.objects.filter(name=j)[0]
-                setMemberDepartment(request,dep,member)
-        return HttpResponseRedirect(reverse('members'))
-    else:
-        return render(request, "Something went wrong")
-
-
-def setMemberDepartment(request,department_name,member):
-    
     try:
+        if request.method == "POST":
+            departments = request.POST.getlist('department')
+            aux_departments = request.POST.getlist('aux_department')
+            groups = request.POST.getlist('groups')
+
+            mega = [departments,aux_departments,groups]
+
+            for i in mega:
+                for j in i:
+                    dep = Department.objects.filter(name=j)[0]
+                    setMemberDepartment(request,dep,member)
+            return render(request,"church/image_upload.html",{"memberID":memberID})
+    except Exception :
         
+        return render(request,"Something went wrong")
+    else:
+        return render(request, 'authentication/login.html')
+
+
+
+@login_required
+def setMemberDepartment(request,department_name,member):
+    try:
         _, created = MemberDepartment.objects.update_or_create(
             member = member,
             department = department_name,
-            role  = "ggg",
+            role  = "None",
             state = "Active",
 
-        )
-        
+        )     
     except Exception :
             raise Exception
-
             return render(request,"Something went wrong")
+
+
 
 @login_required
 def Sacraments(request,memberID):
@@ -174,17 +172,23 @@ def Welfare_Information(request,memberID):
     else:
         return render(request, 'authentication/login.html')
 
-def ImageUpload(request):
+@login_required
+def ImageUpload(request,memberID):
+   #
     print('image upload',  request.method)
+    member = Member.objects.filter(id=memberID)[0]
     if request.method == 'POST':
         # get the files with the given name from the html
         files = request.FILES.get('profilepic')
         print(files, request.FILES)
-        # store the image in a model rhat has an imagefield instance 
-        ImageContainer.objects.create(image=files)
+        # store the image in a model that has an imagefield instance 
+        ImageContainer.objects.create(image=files,member=member)
         # redirect to a different page otherwise file keeps saving if user refreshing 
-        return render(request, 'church/image_upload.html', {"message": 'image upload was successful'})
+        return render(request, 'church/home.html', {"message": 'image upload was successful'})
     return render(request, 'church/image_upload.html', {"message": ''})
+
+
+
 
 @login_required
 def MemberFormOne(request):
@@ -198,7 +202,7 @@ def MemberFormOne(request):
                 email =request.POST.get('email'),
                 gender = request.POST.get('gender'),
                 date_of_birth = request.POST.get('dob'),
-                
+                date_joined = request.POST.get('date_joined'),
                 #Residence Information 
                 residence = request.POST.get('residence'),
                 house_number = request.POST.get('house_number'),
@@ -208,6 +212,7 @@ def MemberFormOne(request):
                 region = request.POST.get('region'),
                 place_of_birth = request.POST.get('place_of_birth'),
                 country = request.POST.get('country'),
+                landmark = request.POST.get('landmark'),
                  
             )
             
@@ -219,11 +224,3 @@ def MemberFormOne(request):
             return render(request,"Something went wrong")
     else:
         return render(request, 'authentication/login.html')
-
-class FormWizardView(SessionWizardView):
-    template_name = "church/add_member.html"
-    form_list = [BioDataForm, ResidenceDataForm]
-    def done(self, form_list, **kwargs):
-        return render(self.request, 'done.html', {
-            'form_data': [form.cleaned_data for form in form_list],
-        })
