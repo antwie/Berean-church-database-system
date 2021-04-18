@@ -8,17 +8,18 @@ from datetime import date
 # Create your models here.\
 class Member(models.Model):
 
-    #personal 
+    #personal
     first_name = models.CharField(max_length = 50,default ='' ,blank=True)
     last_name = models.CharField(max_length = 50,default ='' ,blank=True)
     other_name = models.CharField(max_length = 50,default ='' ,blank=True)
     email = models.EmailField( max_length=150, default='' ,blank=True)
     gender = models.CharField(max_length = 20, default = '' ,blank=True)
+    occupation = models.CharField(max_length = 50,default ='' ,blank=True)
     date_of_birth = models.DateField()
     date_joined = models.DateField(blank=True, default=date(1111, 11, 11), null=True)
 
-    #residence 
-    residence = models.CharField(max_length = 100,default ='' ,blank=True)  
+    #residence
+    residence = models.CharField(max_length = 100,default ='' ,blank=True)
     house_number = models.CharField(max_length = 50,default ='' ,blank=True)
     digital_address = models.CharField(max_length = 50,default ='' ,blank=True)
     phone_number = models.CharField(max_length = 15,default ='' ,blank=True)
@@ -52,14 +53,14 @@ class Member(models.Model):
     emergency_location = models.CharField(max_length = 100,default ='' ,blank=True)
 
 
-    #Matrimony 
+    #Matrimony
     marital_status = models.CharField(max_length = 10,default ='Single' ,blank=True)
     Spouse_name = models.CharField(max_length = 100,default ='' ,blank=True)
     address = models.CharField(max_length = 100,default ='' ,blank=True)
     number_of_children = models.CharField(max_length = 10,default ='0' ,blank=True)
     name_of_childresn = models.CharField(max_length = 500,default ='',blank=True)
-    
-    
+
+
     created = models.DateTimeField(default =timezone.now)
 
     def __str__(self):
@@ -116,12 +117,12 @@ class MemberDepartment(models.Model):
 
 
 class ImageContainer(models.Model):
-    
+
     member = models.ForeignKey(Member, on_delete= models.CASCADE, default=None)
     image = models.ImageField(upload_to='images')
 
     def __str__(self):
         return str(self.member.first_name)+ str(" ")+ str(self.member.last_name)
 
-    
+
 
